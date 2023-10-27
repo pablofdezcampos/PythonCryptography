@@ -1,0 +1,3 @@
+- En este ejemplo real cifraremos y descifraremos un .txt:
+    - El cifrado genera el .txt.enc.
+    - El descifrado genera el .enc.dec

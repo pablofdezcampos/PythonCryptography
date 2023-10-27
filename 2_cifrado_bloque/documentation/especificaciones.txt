@@ -1,0 +1,113 @@
+- Principio de confusión:
+    - La estadística del texto cifrado depende de la del texto claro de una forma tan complicada que no aporta información al criptoanalista
+
+- Principio de ilusión:
+    - Cada dígito de texto claro debe afectar a tantos dígitos del texto cifrado como sea posible y cada dígito debe afectar a tantos dígitos del texto cifrado como sea posible.
+
+- Características del Cifrado en Bloque:
+   - El mensaje se cifra en grupos o bloques, a diferencia del Cifrado en Flujo.
+   - Dependencia entre bits: los bits de texto cifrado son una función compleja de todos bits de clave y de texto claro.
+   - Cambio de bits de entrada: el cambio en un bit del mensaje original produceun cambio de aproximadamente el 50% de los bits del mensaje cifrado.
+   - Cambio de bits de clave: el cambio en un bit de la clave produce un cambio de aproximadamente el 50% de los bits del mensaje cifrado.
+   - Un error en transmisión de texto cifrado se propaga a todo el bloque. Tras el cifrado aproximadamente un 50% de los bits serán erróneos.
+   - Cada símbolo se cifra de manera dependiente a los adyacentes.
+   - Cada bloque se cifra de igual manera independiente del lugar que ocupe dentro del texto claro.
+   - Dos mensajes originales iguales, cifrados con la misma clave, producen el mismo criptograma.
+
+- ALGORITMO DES
+    - Actualmente no se considera un algoritmo de cifrado seguro, aún así hay algún ejemplo de como ejecutarlo.
+
+- ALOGITMO AES:
+    - El objetivo era encontrar un algoritmo de cifrado sustitutivo de DES que usasen varios actores:
+        - Gobierno de EEUU.
+        - Sector privado EEUU.
+        - Por extensión, el resto de países.
+    
+    - Requisitos:
+        - Longitud de bloque: 128 bits.
+        - Longitud de clave: 128, 192, 256 bits.  
+
+    - Este algoritmo se debe usar para cifrar información reducida. Esta práctica es inadecuada cuando se trabaja con grandes cantidades de datos.
+
+- Dentro del Cifrado en Bloque encontramos cinco modos.    
+    
+    - ECB (Electronic Code Book)
+        - Cifrado directo.
+        - Se aplica sobre cada bloque del texto plano obteniendo como bloque de salida resultante el bloque del criptograma correspondiente.
+        
+        - Si sucediera un error de transmisión, éste afectaría a un solo bloque (aproximadamente la mitad de los bits cambiarían de valor).
+        - Se puede cifrar y descifrar en paralelo.
+        - Se puede descifrar un bloque sin descifrar el anterior o posterior.
+        - Si el texto claro tiene bloques idénticos, el texto cifrado tiene los bloques correspondientes idénticos.
+        - Solo se pueden cifrar bloques completos(en caso de no estar completos se rellenan de 0).
+
+    - CBC (Cipher Block Chaining)
+        - Divide el texto claro en N bloques   
+        - Requiere de un vector de inicialización (VI) para combinarlo con el primer bloque de texto claro.
+        - Aplica XOR al primer bloque de texto claro y el vector de inicialización.
+        
+        - Un error afecta al bloque y al siguiente.
+        - Puede empezar a descifrarse a partir de cualquier punto.
+        - El resultado de cifrar un mismo mensaje es diferente si se cambia el VI.
+        - No se puede cifrar en paralelo.
+        - Se puede descifrar en paralelo.  
+        - El último bloque es función de todos los bloques en claro, se usar para autentificar(MAC).
+
+    - CFB (Cipher FeedBack)
+        - A diferencia del anterior que divide el mensaje en bloques de bits, este lo divide en segmentos(s), siendo 1 <= s <= b.
+        - Los tamaños recomendados para s son 1, 8, 64, 128 bits.
+        - La operación XOR se realiza sobre el bloque de salida no el de entrada.
+        - Tambiñen se usa VI.
+
+        - Un error de transmisión afecta al segmento y a los siguientes.
+        - Se puede empezar a descifrar en cualquier punto.
+        - El mismo mensaje se cifra de diferente cambiando el VI.
+        - No se puede cifrar en paralelo.
+        - Se puede descifrar en paralelo.
+
+    - OFB (Output FeedBack)
+        - La idea de este modo de cifrado es imitar la estructura del cifrado en flujo.
+        - Aplicar una operación XOR del mensaje y la clave cifrado.
+            - Para ello el VI se cifre N veces, siendo esta utilizada como la secuencia cifrante.
+            - Por ello es importante que VI se use una vez para cada ejecución.
+        - El VI cifrado es lo que usa como entrada de la función de cifrado.
+        - El primer paso de cifrado -> se realiza XOR del VI cifrado con el primer bloque del texto claro.
+        
+        - Los errores de transmisión no se propagan.
+        - No es autosincronizante.
+        - El mismo mensaje se cifra diferente cambiando VI.
+        - No se puede cifrar ni descifrar en paralelo.
+        - El proceso de cifrado y descifrado usan la misma operación, no la inversa.
+        - La estructura emula la del flujo, pero en este caso no se usa una secuencia pseudoaleatoria, sino una permutación aleatoria (carece de repeticiones).
+
+    - CTR (Counter Mode)
+        - Se asemeja al cifrado en flujo.
+        - En este caso se usa una secuencia de contadores para generar la secuencia cifrante.
+        - Se realiza XOR del contador de la etapa actual cifrado y el texto claro.
+        - Para la última etapa se escogen los bits más significativos de la secuencia cifrante, el resto se descartan.
+
+        - Los errores no se propagan.
+        - No es autosincronizante.
+        - El mismo mensaje se cifra diferente cambiando el primer contador.
+        - Se puede cifrar y descifrar en paralelo.
+        - Es equivalente al cifrado en flujo, donde la secuencia cifrante son los números del contador cifrados.
+        - Se puede cifrar y descifrar en paralelo.
+
+- Funciones Hash:
+    - F(x) es fácil de calcular y F^−1(y) difícil, siendo computacionalmente intratable el recuperar el mensaje original.
+    - Una de las propiedades fundamentales de una función hash es que el resumen o salida que proporcionan es de longitud fija, independiente de la longitud del mensaje de entrada.
+    - Una función hash criptográfica es una función hash a la que se le piden requisitos extra que la hagan comportarse como una función aleatoria, determinista y eficiente.
+    - Para que sean seguras:
+        - Dependencia de bits -> el resumen debe depender de todos los bits de la clave.
+        - Resistencia a la preimagen -> dado un resumen m, debe ser computacionalmente difícil obtener M, de modo que H(M) = m.
+        - Resistencia a la segunda preimagen -> dado un mensaje cualquiera M, debe ser computacionalmente difícil encontrar otro mensaje N cuyo resúmenes coincidan (H(M) = H(N)).
+        - Resistencia a colisiones -> deber ser computacionalmente difícil encontrar una colisión, es decir, determinar dos mensajes cualquiera M y N cuyos resúmenes coincidan.
+
+    - MD5 -> es una función hash que proporciona una salida de 128 bits, manipulando bloques de 512 bits.
+    - SHA -> ha pasado por varias versiones (SHA - 1, no utilizada por motivos de seguridad), la más actual SHA-2.
+          - SHA-2, se trata de una familia de algoritmos compuesto por SHA-224, SHA-256, SHA-382, SHA-512.
+    
+    - HMAC -> utilizado para verificar que los datos estén completos y no hayan sido modificados en su transmisión, como podría suceder en un ataque Man-in-The-Middle(MiTM).
+           - Basados en cifrado en bloque:
+                - MAC es la última parte del criptograma cuando todos los bits del criptograma son función de todos los bits del mensaje original.
+           - HMAC -> antes de aplicar la función hash se calculan una serie de bits, dependientes de la clave a utilizar y se añaden al mensaje. La seguridad de la función hash utilizada influye en el HMAC. 

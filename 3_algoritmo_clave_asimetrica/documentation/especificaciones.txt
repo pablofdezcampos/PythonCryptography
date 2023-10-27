@@ -1,0 +1,26 @@
+CRIPTOSISTEMAS DE CLAVE PÚBLICA:
+    - Es un sistemas criptográfico en el que las claves vienen en pares.
+    - La transformacion realiza por una de las claves solo se puede deshacer con la otra clave.
+    - La clave privada se mantiene secreta mientras que la otra se hace pública.
+    - Cuando se usa para firmas digitales, la clave privada se usa para firmar y la clave pública para verificar.
+    - Cualquier persona puede verificar una firma, pero solo el propietario de la clave privada correspondiente podría haberla generado.
+
+
+- Principales mecanismos de seguridad de los Criptosistemas de Clave Pública:
+    - Cifrado: se puede cifrar mensajes usando algoritmos como RSA o ElGamal.
+    - Establecimiento: se realiza usando protocolos para establecer claves secretas sobre un canal inseguro.
+        - Protocolo de transporte de clave RSA.
+    - No-repudio: se puede lograr con los algoritmos de firma digital, que garantizan también la integridad, por ejemplo firma RSA, DSA o ECDSA.
+    - Identificación: se pueden identificar entidades que utilizan protocolos de desafío y respuestas a través de sus firmas digitales.
+
+CRIPTOSISTEMA RSA:
+    - Es el más usado de los algoritmos asimétricos.   
+    - La clave pública y privada se calculan a raíz de un número que se obtiene como producto de dos primos grandes. 
+    -  El RSA es un sistema criptográfico que permite enviar mensajes cifrados sin tener que intercambiar una clave privada y es el más utilizado para este fin.
+
+
+CRIPTOSISTEMA BASADOS EN EL PROBLEMA DEL LOGARITMO DISCRETO:
+    - Criptosistema de ElGamal
+    - Algoritmo de firma digital(DSA):
+        - Es utilizado para asegurar la autenticidad e integridad de los datos que se transmiten electrónicamente.
+        - Es un algoritmo de clave pública que se utiliza para firmar digitalmente documentos electrónicos.
