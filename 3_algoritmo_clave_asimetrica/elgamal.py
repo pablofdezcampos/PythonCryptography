@@ -1,3 +1,7 @@
+"""
+    EJEMPLO DE USO ELGAMAL
+"""
+
 from Crypto.PublicKey import ElGamal
 from Crypto.Cipher import PKCS1_OAEP
 from Crypto import Random

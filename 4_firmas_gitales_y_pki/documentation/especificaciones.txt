@@ -1,0 +1,26 @@
+FIRMAS DIGITALES:
+    - Los protocolos de firmas digitales deben verificar que las firmas digitales sean fáciles de elaborar y de verficar.
+    - Deben ser difíciles de falsificar.
+
+    - Protocolo genérico:
+        - A firma un documento para B usando su clave privada.
+        - A aplica el algoritmo de firma, que combina su clave privada y el contenido del documento obteniendo su documento firmado el cuál envía a B.
+        - B aplca el algoritmo de verificación de firma partiendo de la clave pública A y de su firma. Si esta función concuerda con el documento la firma es válida.
+
+    - Firma digital con RSA:
+        - Se utiliza en función resumen (hash) que se aplica al mensaje a firmar, luego se calcula la firma, y se envía el par formado por el mensaje y la firma, que será el mensaje cifrado con la clave privada permanente.
+
+    - Firma digital con ElGamal:
+        - Se basa en la dificultad computacional que supone resolver el problema del logaritmo discreto.
+
+    - Firma digital con DSA:
+        - Visto en "3_algoritmo_clave_asimetrica" -> dsa.py
+
+    - Firma digital con curvas elípticas ECDSA:
+        - El protocolo de firma digital de curvas elípticas se basa en el protocolo de firma de ElGamal y es análogo a DSA, pero usando sumas en vez de multiplicaciones.
+
+CLAVE PÚBLICA PKI:
+    - Es toda la tecnología, personas, políticas y protocolos que intervienen en el proceso de creación, gestión, almacenamiento, distribución y revocación de los certificados para ser usados en aplicaciones tales como la firma digital.
+    - Basados en la criptografía de clave pública.
+    - La PKI se utiliza para apoyar los servicios de seguridad como la autenticación, integridad, confidencialidad y no repudio. 
+    - Estos se logran mediante una combinación de técnicas criptográficas simétricas y asimétricas habilitadas a través del uso de una única infraestructura fácilmente gestionada en lugar de utilizar múltiples soluciones de seguridad.

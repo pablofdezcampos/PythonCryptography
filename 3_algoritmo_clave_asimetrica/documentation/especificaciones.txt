@@ -20,7 +20,17 @@ CRIPTOSISTEMA RSA:
 
 
 CRIPTOSISTEMA BASADOS EN EL PROBLEMA DEL LOGARITMO DISCRETO:
-    - Criptosistema de ElGamal
+    - Criptosistema de ElGamal.
     - Algoritmo de firma digital(DSA):
         - Es utilizado para asegurar la autenticidad e integridad de los datos que se transmiten electrónicamente.
         - Es un algoritmo de clave pública que se utiliza para firmar digitalmente documentos electrónicos.
+
+CRIPTOGRAFÍA CON CURVAS ELÍPTICAS 
+    **BUSCAR EJEMPLOS DE LO QUE ES UNA CURVA ELÍPTICA*
+    - En criptografía no se usan las curvas basadas en números reales, ya que esto produce errores de redondeo de ordenadores.
+    - Se usan curvas elípticas definidas sobre cuerpos finitos.
+
+    - Intercambio de la clave de Diffie-Hellman(ECDH):
+        1. Se elige públicamente una curva elíptica E ded orden n, sobre un cuerpo finito F.
+        2. Se elige aleatoriamente un punto base(generador), P = (xp, yp) de la curva elíptica E, igualmente con orden n.
+           El primo p, la curva dada por sus coeficientes a,b y el elemento primitivo P son los parámetros del dominio.
