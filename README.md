@@ -5,4 +5,4 @@
 - En cada carpeta se presenta un temario con ejercicios prácticos.
 
 # Technologies 
-- Python, con mucho uso de las líbreria crytography, ya que es la que nos facilita el poder hacer encriptaciones y temas relacionados con Criptografía
+- Python, con mucho uso de las líbreria crytography, ya que es la que nos facilita el poder hacer encriptaciones y temas relacionados con Criptografía.
