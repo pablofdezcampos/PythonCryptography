@@ -34,5 +34,5 @@
     - Clave Pública PKI.
 - Unidad 5. - **Esteganografía**
     - Esteganografía - Ejemplo con Python
-# Technologies 
+# Tecnologías 
 - Python, con mucho uso de las líbreria crytography, ya que es la que nos facilita el poder hacer encriptaciones y temas relacionados con Criptografía.
