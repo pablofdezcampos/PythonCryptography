@@ -1,0 +1,40 @@
+- Características del Cifrado en Flujo:
+    
+    - Utilización de un alfabeto binario.
+    - Clave secreta que la conocían emisor y receptor.
+    - Actúa bit a bit.
+
+    - La generación de números puramente aleatorios es una de las claves de seguridad incondicional de este algoritmo, compleja de resolver. 
+    - Por ello se optó por sustituir la secuencia aleatoria por una pseudoaleatoria y usarla como clave.
+    
+    - La clave solo se usaba una vez (OTP (One Time Pad)):
+        - La clave es igual de larga que el texto clara, esta además es aleatoria.
+        - Funciona por medio de la ejecución de una operación XOR.
+    
+    - La clave se genera de forma aleatoria no pseudoaleatoria:
+        - aleatorio = impredecible
+        - pseudoaleatorio = puede ser predecible, por ejemplo si un ordenador genera secuencias de números aleatorios, estos números son aleatorios pero dichas secuencias son predecibles.
+    
+    - Clave -> especificaciones:
+        - Las claves deben ser de 128 bits (16 bytes), 192 bits (24 bytes), 256(32 bytes).
+        - Según la seguridad que deseemos, en nuestra clave la inicializamos con x bytes.
+        - A medida que aumenta la longitud de la clave mayor es la seguridad, pero también mayor es el costo computacional del cifrado y descifrado.
+
+- Seguridad del cifrado -> para garantizar la seguridad de este cifrado se deben de cumplir una serie de condiciones:
+    - Periodo
+    - Distribución de bits
+    - Imprevisibilidad
+
+    - Periodo: es la porción de la secuencia que no se repite (debe ser la secuencia tan larga como la longitud del texto a cifrar).
+    
+    - Distribución de bits:
+        - Rachas -> se llama a las rachas de longitud k a la sucesión de k dígitos iguales entre dos dígitos.
+        - Gaps -> se llama así a las rachas de 0.
+        - Blocks -> son las rachas de 1.
+
+        - Hay tres postulados que explican las propiedades que deben seguir estas secuencias:
+            - G1 -> en cada periodo de la secuencia debe haber los mismos 0 que 1.
+            - G2 -> en cada periodo de la secuencia por cada longitud habrá el mismo número de rachas de 0 que de 1.
+            - G3 -> el cálculo de de coincidencias entre una secuencia y su versión desplazada no debe aportar información sobre el periodo de la secuencia.
+    
+    - Imprevisibilidad -> una secuencia tiene Imprevisibilidad cuando no es posible predecir el siguiente dígito con una probabilidad mayor que la aletoriedad, es decir, cuando la probabilidad de acierto es <= 1/2

@@ -1,0 +1,7 @@
+ESTEGANOGRAFÍA:
+    - Consiste en la práctica de ocultar información dentro de otro mensaje u objeto físico para evitar su detección.
+    - Se puede usar para ocultar casi cualquier tipo de contenido digital, ya sea texto, imágenes, videos o audios. 
+    - Dichos datos ocultos se extraen en destino.
+
+    - El contenido encubierto mediante esteganografía se cifra antes de ocultarlo dentro de otro formato de archivo. 
+    - Si no está cifrado, es posible que se procese de alguna manera para que sea más difícil de detectar.
