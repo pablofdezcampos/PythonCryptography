@@ -1,7 +1,7 @@
 # PythonCryptography
 
 # Descripción
-- En este repositorio encontramos los temarios dividos por carpetas, los cuales están engloabdos en el mundo de la Criptografía.
+- En este repositorio encontramos los temarios dividos por carpetas, los cuales están englobados en el mundo de la Criptografía.
 - En cada carpeta se presenta un temario con ejercicios prácticos.
 
 # Temario
